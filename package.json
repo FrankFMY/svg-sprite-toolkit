@@ -1,0 +1,88 @@
+{
+  "name": "@frankfmy/svg-sprite-toolkit",
+  "version": "0.1.0",
+  "description": "Compile caller-owned SVG symbols with a Vite plugin and optional Svelte renderer.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "FrankFMY (Artem Prianishnikov)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrankFMY/svg-sprite-toolkit.git"
+  },
+  "homepage": "https://github.com/FrankFMY/svg-sprite-toolkit#readme",
+  "bugs": { "url": "https://github.com/FrankFMY/svg-sprite-toolkit/issues" },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/compiler.d.ts",
+      "import": "./dist/compiler.js"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.ts",
+      "import": "./dist/compiler.js"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.js"
+    },
+    "./Icon.svelte": {
+      "types": "./dist/Icon.svelte.d.ts",
+      "svelte": "./src/Icon.svelte",
+      "default": "./src/Icon.svelte"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src/Icon.svelte",
+    "src/Icon.svelte.d.ts",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md"
+  ],
+  "scripts": {
+    "lint": "eslint src test scripts eslint.config.js",
+    "typecheck": "tsc --noEmit && tsc --project tsconfig.test.json && svelte-check --tsconfig ./tsconfig.svelte.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "build": "node scripts/build.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "jsdom": "27.1.0",
+    "svgo": "4.1.0"
+  },
+  "peerDependencies": {
+    "svelte": "^5.57.2",
+    "vite": "^7.3.7"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "@sveltejs/vite-plugin-svelte": "6.2.1",
+    "@types/jsdom": "27.0.0",
+    "@types/node": "24.9.1",
+    "eslint": "9.39.1",
+    "playwright": "1.63.0",
+    "svelte": "5.57.2",
+    "svelte-check": "4.3.3",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.2",
+    "vite": "7.3.7"
+  }
+}
