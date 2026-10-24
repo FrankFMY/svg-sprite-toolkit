@@ -1,11 +1,11 @@
 {
   "name": "@frankfmy/svg-sprite-toolkit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Compile caller-owned SVG symbols with a Vite plugin and optional Svelte renderer.",
   "private": true,
   "type": "module",
   "license": "MIT",
-  "author": "FrankFMY (Artem Prianishnikov)",
+  "author": { "name": "Artem Prianishnikov", "email": "Pryanishnikovartem@gmail.com", "url": "https://frankfmy.com" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FrankFMY/svg-sprite-toolkit.git"

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Add verified author email, Telegram and professional profile links to documentation and package metadata.
+- No runtime, declaration, dependency or public API changes.
+
+
 ## 0.1.0
 
 - Export an ESM compiler and declarations from the root and `/compiler`, with explicit caller-owned source, selection, sprite, type and schema paths.

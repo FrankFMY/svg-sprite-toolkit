@@ -20,21 +20,21 @@ npm run check
 npm pack
 ```
 
-`npm pack` produces `frankfmy-svg-sprite-toolkit-0.1.0.tgz`. Copy it into a separate application directory and install it there:
+`npm pack` produces `frankfmy-svg-sprite-toolkit-0.1.1.tgz`. Copy it into a separate application directory and install it there:
 
 ```sh
-npm install ./frankfmy-svg-sprite-toolkit-0.1.0.tgz
+npm install ./frankfmy-svg-sprite-toolkit-0.1.1.tgz
 ```
 
 For the GitHub release, download and verify the archive before local installation:
 
 ```sh
-curl --fail --location --output frankfmy-svg-sprite-toolkit-0.1.0.tgz \
-  https://github.com/FrankFMY/svg-sprite-toolkit/releases/download/v0.1.0/frankfmy-svg-sprite-toolkit-0.1.0.tgz &&
+curl --fail --location --output frankfmy-svg-sprite-toolkit-0.1.1.tgz \
+  https://github.com/FrankFMY/svg-sprite-toolkit/releases/download/v0.1.1/frankfmy-svg-sprite-toolkit-0.1.1.tgz &&
 curl --fail --location --output SHA256SUMS \
-  https://github.com/FrankFMY/svg-sprite-toolkit/releases/download/v0.1.0/SHA256SUMS &&
+  https://github.com/FrankFMY/svg-sprite-toolkit/releases/download/v0.1.1/SHA256SUMS &&
 sha256sum --check SHA256SUMS &&
-npm install ./frankfmy-svg-sprite-toolkit-0.1.0.tgz
+npm install ./frankfmy-svg-sprite-toolkit-0.1.1.tgz
 ```
 
 This works with npm 12's default restriction on direct URL dependencies without changing its policy. Require a successful checksum check before installing; use an equivalent SHA-256 verifier on platforms without `sha256sum`.
@@ -159,6 +159,11 @@ The MIT license covers the **tool**. Input artwork and any rights in generated a
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for local checks and [CHANGELOG.md](CHANGELOG.md) for API changes.
 
-## Author
+## Author and contact
 
-[Artem Prianishnikov (FrankFMY)](https://github.com/FrankFMY).
+Created and maintained by [Artem Prianishnikov (Артем Прянишников / FrankFMY)](https://github.com/FrankFMY).
+
+- Email: [Pryanishnikovartem@gmail.com](mailto:Pryanishnikovartem@gmail.com)
+- Telegram: [@FrankFMY](https://t.me/FrankFMY)
+- Website: [frankfmy.com](https://frankfmy.com)
+- Profiles: [GitHub](https://github.com/FrankFMY) · [LinkedIn](https://www.linkedin.com/in/frankfmy/) · [X](https://x.com/FrankFMY)
