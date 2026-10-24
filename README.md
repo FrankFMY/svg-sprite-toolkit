@@ -159,6 +159,26 @@ The MIT license covers the **tool**. Input artwork and any rights in generated a
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for local checks and [CHANGELOG.md](CHANGELOG.md) for API changes.
 
+## Continuous integration
+
+[CI runs](https://github.com/FrankFMY/svg-sprite-toolkit/actions/workflows/ci.yml)
+run on pull requests, pushes to `main`, and manual dispatch with Node 24.20.0
+and Bun 1.4.2. They run `npm run check`, a dependency audit and
+`node scripts/verify-consumers.mjs`. The latter installs the actual tarball in
+separate projects: compiler-only Node/Bun and strict types without ambient Node
+types, Vite/Svelte positive and negative types/builds, SSR, Chromium/WebKit
+rendering, reference SVGs, watcher recovery, cancellation and teardown.
+To run the consumer gate locally, install the pinned browsers first:
+
+```sh
+npx --no-install playwright install chromium webkit
+npm run build
+node scripts/verify-consumers.mjs
+```
+
+Consumer fixtures use only synthetic geometry. Logs and browser receipts are
+retained for seven days. The workflow does not publish packages.
+
 ## Author and contact
 
 Created and maintained by [Artem Prianishnikov (Артем Прянишников / FrankFMY)](https://github.com/FrankFMY).
