@@ -78,7 +78,9 @@ const good: IconKey = 'circle';
 <Icon key={good}/>
 `);
     const diagnostics = run(vite, 'node', ['node_modules/svelte-check/bin/svelte-check', '--tsconfig', 'tsconfig.json'], 1);
-    assert.match(diagnostics, /missing/); assert.match(diagnostics, /spriteUrl/); assert.match(diagnostics, /boolean/);
+    assert.match(diagnostics, /missing/); assert.match(diagnostics, /spriteUrl/);
+    assert.match(diagnostics, /Type 'true' is not assignable to type 'string \| number \| undefined'/);
+    assert.match(diagnostics, /svelte-check found 3 errors and 0 warnings/);
     rmSync(negative);
     for (const [kind, value] of [
       ['selection', '{"keys":[]}'], ['selection', '{"keys":{"missing":true}}'],
