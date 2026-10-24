@@ -1,8 +1,9 @@
 {
   "name": "@frankfmy/svg-sprite-toolkit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Compile caller-owned SVG symbols with a Vite plugin and optional Svelte renderer.",
-  "private": true,
+  "private": false,
+  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" },
   "type": "module",
   "license": "MIT",
   "author": { "name": "Artem Prianishnikov", "email": "Pryanishnikovartem@gmail.com", "url": "https://frankfmy.com" },
