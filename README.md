@@ -8,14 +8,13 @@ The public root and `/compiler` export the compiler. `/vite` exports `viteSvgSpr
 
 ## Install and build
 
-Requires Node 22.12 or later. Local runtime qualification uses Node 24.20.0 and Bun 1.4.2; Vite integration uses Vite 7.3.7 and Svelte 5.57.2. This is an ESM package; CommonJS is not provided. Version 0.1.2 is configured for public npm distribution. Check the exact registry version before installing:
+Requires Node 22.12 or later. Local runtime qualification uses Node 24.20.0 and Bun 1.4.2; Vite integration uses Vite 7.3.7 and Svelte 5.57.2. This is an ESM package; CommonJS is not provided. Version **0.1.2** is available as [@frankfmy/svg-sprite-toolkit on npm](https://www.npmjs.com/package/@frankfmy/svg-sprite-toolkit).
 
 ```sh
-npm view @frankfmy/svg-sprite-toolkit@0.1.2 version &&
 npm install @frankfmy/svg-sprite-toolkit@0.1.2
 ```
 
-Publication is separate from verification. Source builds and the immutable v0.1.1 GitHub archive below remain alternatives.
+Source builds and the older, immutable **v0.1.1** GitHub archive below remain alternatives. The archive is a different version from npm 0.1.2.
 
 To build a checkout:
 
