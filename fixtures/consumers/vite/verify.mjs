@@ -64,7 +64,9 @@ try{
  await writeFile('artwork/source.svg',source.replace('r="8"','r="6"'));
  await waitFor(async()=>{const r=await current();return r.status===200&&r.text.includes('r="6"');},'source geometry change');receipt.watch.push('source geometry change');
  await writeFile('artwork/source.svg',source.replace(/<symbol id="triangle"[\s\S]*?<\/symbol>/u,''));
- await waitFor(async()=>!(await readFile('src/generated/icon-keys.ts','utf8')).includes('triangle'),'generated type removal');
+ // The compiler publishes separate files with sequential atomic renames.
+ // A new type file alone does not prove that the matching schema is ready.
+ await waitFor(async()=>{const types=await readFile('src/generated/icon-keys.ts','utf8');const schema=JSON.parse(await readFile('generated/schema.json','utf8'));return !types.includes('triangle')&&!Object.hasOwn(schema.properties.keys.properties,'triangle');},'generated type and schema removal');
  assert.equal(JSON.parse(await readFile('generated/schema.json','utf8')).properties.keys.properties.triangle,undefined);receipt.watch.push('source keys and schema change');
  await writeFile('icons.json','{"keys":{"missing":true}}');
  await waitFor(async()=>(await current()).status===500,'missing symbol error');await waitFor(()=>wsErrors.some(x=>x.includes('Unknown symbol')),'websocket error');receipt.watch.push('missing symbol HTTP 500 and websocket error');
