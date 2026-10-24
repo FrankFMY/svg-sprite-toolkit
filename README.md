@@ -8,13 +8,13 @@ The public root and `/compiler` export the compiler. `/vite` exports `viteSvgSpr
 
 ## Install and build
 
-Requires Node 22.12 or later. Local runtime qualification uses Node 24.20.0 and Bun 1.4.2; Vite integration uses Vite 7.3.7 and Svelte 5.57.2. This is an ESM package; CommonJS is not provided. Version **0.1.2** is available as [@frankfmy/svg-sprite-toolkit on npm](https://www.npmjs.com/package/@frankfmy/svg-sprite-toolkit).
+Requires Node 22.12 or later. Local runtime qualification uses Node 24.20.0 and Bun 1.4.2; Vite integration uses Vite 7.3.7 and Svelte 5.57.2. This is an ESM package; CommonJS is not provided. Version **0.1.3** is available as [@frankfmy/svg-sprite-toolkit on npm](https://www.npmjs.com/package/@frankfmy/svg-sprite-toolkit).
 
 ```sh
-npm install @frankfmy/svg-sprite-toolkit@0.1.2
+npm install @frankfmy/svg-sprite-toolkit@0.1.3
 ```
 
-Source builds and the older, immutable **v0.1.1** GitHub archive below remain alternatives. The archive is a different version from npm 0.1.2.
+Source builds and the older, immutable **v0.1.1** GitHub archive below remain alternatives. The archive is a different version from npm 0.1.3.
 
 To build a checkout:
 
@@ -26,10 +26,10 @@ npm run check
 npm pack
 ```
 
-`npm pack` produces `frankfmy-svg-sprite-toolkit-0.1.2.tgz`. Copy it into a separate application directory and install it there:
+`npm pack` produces `frankfmy-svg-sprite-toolkit-0.1.3.tgz`. Copy it into a separate application directory and install it there:
 
 ```sh
-npm install ./frankfmy-svg-sprite-toolkit-0.1.2.tgz
+npm install ./frankfmy-svg-sprite-toolkit-0.1.3.tgz
 ```
 
 For the GitHub release, download and verify the archive before local installation:
@@ -144,7 +144,7 @@ Use the component in a `.svelte` file:
 
 Run Vite or the compiler once before checking imports of the generated key file. The renderer accepts a string key; assign it to the caller's generated `IconKey` type to check membership. It does not mutate package declarations or merge a global icon-key type. `spriteUrl` is required; prefer the virtual module so Vite controls the base/asset URL. Outside Vite, supply a same-origin sprite URL without a fragment. Keys are fragment-encoded. A `title` makes the SVG an accessible image; without one it is decorative. `class`, `style`, `width`, and `height` are supported; dimensions default to `1em`.
 
-The plugin compiles before Vite builds, emits the selected sprite under `fileName` (default `icons.svg`), and resolves the virtual URL for both absolute and relative Vite bases. Do not also copy that asset through `publicDir` or point compiler output into Vite's output/public directories. Development handles input add/change/unlink events, coalesces queued rebuilds, cancels superseded work, and awaits the current build before serving. Invalid input produces a Vite error overlay and HTTP 500 at the sprite endpoint until fixed; a production build rejects. Teardown aborts queued work and removes the plugin's listeners from Vite's shared watcher. The plugin does not own or close Vite's watcher. It does not open a separate watcher for direct compiler calls.
+The plugin compiles before Vite builds, emits the selected sprite under `fileName` (default `icons.svg`), and resolves the virtual URL for both absolute and relative Vite bases. SSR builds use the public Vite base rather than a Node file URL; CDN bases retain their origin. As in Vite itself, relative bases normalize to `/` during SSR, so configure an absolute base such as `/demo/` when serving under a path prefix. Serve the client build's emitted assets alongside the SSR HTML. Do not also copy that asset through `publicDir` or point compiler output into Vite's output/public directories. Development handles input add/change/unlink events, coalesces queued rebuilds, cancels superseded work, and awaits the current build before serving. Invalid input produces a Vite error overlay and HTTP 500 at the sprite endpoint until fixed; a production build rejects. Teardown aborts queued work and removes the plugin's listeners from Vite's shared watcher. The plugin does not own or close Vite's watcher. It does not open a separate watcher for direct compiler calls.
 
 ## Supported SVG and limits
 
@@ -189,7 +189,7 @@ retained for seven days. The workflow does not publish packages.
 
 Created and maintained by [Artem Prianishnikov (Артем Прянишников / FrankFMY)](https://github.com/FrankFMY).
 
-- Email: [Pryanishnikovartem@gmail.com](mailto:Pryanishnikovartem@gmail.com)
+- Email: [Pryanishnikovartem@gmail.com](mailto:Pryanishnikovartem@gmail.com) · [frankfmy@proton.me](mailto:frankfmy@proton.me)
 - Telegram: [@FrankFMY](https://t.me/FrankFMY)
 - Website: [frankfmy.com](https://frankfmy.com)
 - Profiles: [GitHub](https://github.com/FrankFMY) · [LinkedIn](https://www.linkedin.com/in/frankfmy/) · [X](https://x.com/FrankFMY) · [npm](https://www.npmjs.com/~frankfmy)

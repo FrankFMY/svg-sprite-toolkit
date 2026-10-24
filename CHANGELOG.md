@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3
+
+- Resolve the virtual sprite URL against the public Vite base during SSR, not
+  against the Node bundle file location. Preserve client and development behavior.
+- Cover path-prefixed, relative (Vite-normalized) and CDN bases with actual SSR
+  bundle execution. Retain optional Svelte/Vite peers and compiler-only usage.
+
 ## 0.1.2
 
 - Prepare public npm distribution with explicit registry and access metadata.

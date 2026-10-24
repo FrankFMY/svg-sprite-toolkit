@@ -90,6 +90,9 @@ export function viteSvgSprite(options: SvgSpriteOptions): Plugin {
       if (id !== resolvedId) return;
       if (config.command === 'build') {
         if (!asset) throw new Error('Sprite asset is unavailable');
+        // SSR executes in Node: Rollup's file URL would expose a build-machine
+        // path in the HTML. The browser must resolve the public Vite base instead.
+        if (config.build.ssr) return `export const spriteUrl = ${JSON.stringify(`${config.base}${fileName}`)};`;
         return `export const spriteUrl = import.meta.ROLLUP_FILE_URL_${asset};`;
       }
       return `export const spriteUrl = ${JSON.stringify(mount)};`;
